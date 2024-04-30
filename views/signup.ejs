@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../styles/components/signup-form.css" />
+    <link rel="stylesheet" href="styles/utils.css" />
+  </head>
+  <body>
+    <div>
+      <a href="/" class="logo">
+        <img src="/Assets/thumbnail" alt="" />
+        <h1 class="app-name">SnapLink</h1>
+      </a>
+    </div>
+    <div class="signup container">
+      <h1>Create account</h1>
+      <form action="/auth/signup" method="post">
+        <input type="text" name="name" placeholder="Enter name" autofocus />
+        <input type="text" name="email" placeholder="Enter email" />
+        <input type="password" name="password" placeholder="Create password" />
+
+        <button type="submit">Sign up</button>
+      </form>
+      <h6>Already have an account? <a href="/auth/login">Login</a> instead</h6>
+    </div>
+  </body>
+</html>

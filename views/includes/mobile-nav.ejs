@@ -1,0 +1,15 @@
+<div class="navigation">
+  <% if(!isAuthenticated) { %>
+  <div class="login-btns">
+    <button class="login-btn" type="submit">
+      <a href="/auth/login">Login</a>
+    </button>
+  </div>
+  <% } else { %> <% if(name) {%>
+  <div class="profile-name"><%= name %></div>
+  <% } %>
+  <form action="/auth/logout" method="post">
+    <button class="logout-btn" type="submit">Logout</button>
+  </form>
+  <% } %>
+</div>

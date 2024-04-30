@@ -1,0 +1,79 @@
+<%- include('includes/header.ejs') %>
+    <link rel="stylesheet" href="styles/components/homepage.css" />
+<%- include('includes/app-logo.ejs') %>
+            <div class="auth-btns">
+              <%- include('includes/mobile-nav.ejs') %>
+            </div>
+        </div>
+        <form action="/result" method="post" class="input-url section">
+          <label for="urlInput"></label>
+          <input
+            required
+            placeholder="Enter url"
+            type="url"
+            name="fullUrl"
+            class="url-input"
+            id="urlInput"
+            autofocus
+          />
+          <button type="submit" class="btn">Snap</button>
+        </form>
+  
+        <% if(shortUrls.length>0){ %>
+        <div class="history section">
+          <p>History</p>
+          <i class="fa-solid fa-clock-rotate-left"></i>
+        </div>
+  
+        <% if(!isAuthenticated) { %>
+        <h3 class="not-logged-in-msg">Please log in to save your snapped urls</h3>
+  
+        <% } %>
+        <table class="history-tbl">
+          <tbody>
+            <% for(let shortUrl of shortUrls) { %>
+            <tr class="contents">
+              <td class="domain">
+                <%= shortUrl.fullUrl.split('.')[1][0].toUpperCase() + shortUrl.fullUrl.split('.')[1].substring(1) %>
+              </td>
+              <td class="originalUrl">
+                <a href="<%= shortUrl.fullUrl %>" target="_blank"
+                  ><%= shortUrl.fullUrl %></a
+                >
+              </td>
+              <td class="snapUrl">
+                <a
+                  class="urlToCopy"
+                  href="<%= shortUrl.fullUrl %>"
+                  target="_blank"
+                  ><%= shortUrl.shortUrl %></a
+                >
+              </td>
+              <td class="commands copyBtn-container">
+                <button class="copyBtn">
+                  <i class="fa-regular fa-copy"></i><span>Copy</span>
+                </button>
+                <form action="/deleteurl" method="post" class="url-dlt">
+                  <input type="hidden" name="id" value="<%= shortUrl._id %>" />
+                  <button class="url-dlt-btn" type="submit">
+                    <i class="fa-regular fa-trash-can"></i> Delete
+                  </button>
+                </form>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <% } else { %>
+        <h3 class="no-data">Snap your first url now!</h3>
+        <% } %>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

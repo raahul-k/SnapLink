@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../styles/components/login-form.css" />
+    <link rel="stylesheet" href="styles/utils.css" />
+  </head>
+  <body>
+    <div>
+      <a href="/" class="logo">
+        <img src="/Assets/thumbnail" alt="" />
+        <h1 class="app-name">SnapLink</h1>
+      </a>
+    </div>
+    <div class="login container">
+      <h1>Login</h1>
+      <form action="/auth/login" method="post">
+        <input type="text" name="email" placeholder="Email" autofocus />
+        <input type="password" name="password" placeholder="Password" />
+        <button type="submit">Login</button>
+      </form>
+      <h6>
+        New here? Let's <a href="/auth/signup">Create an account</a> first
+      </h6>
+    </div>
+  </body>
+</html>
