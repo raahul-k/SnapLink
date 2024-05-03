@@ -49,24 +49,19 @@
 }
 .input-url input {
   padding: 0.8rem;
-  border-radius: 5px;
+  border-radius: 5px 0 0 5px;
   border: 1.5px solid #1b77d2;
+  border-right: none;
   flex-grow: 1;
 }
 .input-url button {
   padding: 0.8rem;
   border: 1.5px solid #1b77d2;
-  border-radius: 5px;
+  border-radius: 0 5px 5px 0;
   font-weight: 600;
   text-align: center;
   transition: all 0.1s;
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  background-color: #1b77d2;
-  color: white;
+  position: static;
 }
 .input-url button:hover {
   background-color: #1b77d2;

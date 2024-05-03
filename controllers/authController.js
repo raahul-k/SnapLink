@@ -29,8 +29,6 @@ exports.postLogin = (req, res, next) => {
             return req.session.save((err) => {
               console.log(err);
               console.log("Succesfully logged in");
-
-              console.log(`${ShortUrl.length} need to be saved`);
               //Now that we are logged in, look for urls that are not saved, and then save them.
               ShortUrl.updateMany(
                 { urlId: req.sessionID },

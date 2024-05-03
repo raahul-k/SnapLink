@@ -13,7 +13,6 @@ exports.getResult = async (req, res, next) => {
 
 exports.deleteUrl = async (req, res, next) => {
   const id = req.body.id;
-  console.log("Here's your id ", id);
   await ShortUrl.deleteOne({ _id: id });
   res.redirect("/");
 };
