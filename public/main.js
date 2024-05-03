@@ -32,6 +32,21 @@ for (let i = 0; i < copyBtn.length; i++) {
   });
 }
 
+const initialWindowHeight = window.innerHeight;
+
+// Function to adjust button position
+function adjustButtonPosition() {
+  let keyboardHeight = initialWindowHeight - window.innerHeight;
+  document.querySelector(".input-url button").style.bottom = `${
+    keyboardHeight + 20
+  }px`; // Adjust as needed
+}
+
+// Listen for resize event
+window.addEventListener("resize", adjustButtonPosition);
+
+// Initial adjustment
+adjustButtonPosition();
 {
   /* <i class="fa-solid fa-circle-check" style="color: #4cc24e;"></i>; */
 }
