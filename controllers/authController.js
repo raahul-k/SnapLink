@@ -32,11 +32,12 @@ exports.postLogin = (req, res, next) => {
 
               console.log(`${ShortUrl.length} need to be saved`);
               //Now that we are logged in, look for urls that are not saved, and then save them.
-              ShortUrl.updateMany({ userId: null }, { userId: user._id }).then(
-                () => {
-                  res.redirect("/");
-                }
-              );
+              ShortUrl.updateMany(
+                { urlId: req.sessionID },
+                { urlId: user._id }
+              ).then(() => {
+                res.redirect("/");
+              });
             });
           } else {
             console.log("Wrong password, try again");

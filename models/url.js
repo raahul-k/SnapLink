@@ -10,9 +10,9 @@ const generateRandomString = (length) => {
 };
 
 const urlSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+  urlId: {
+    type: mongoose.Schema.Types.Mixed,
+    required: true,
   },
   fullUrl: {
     type: String,

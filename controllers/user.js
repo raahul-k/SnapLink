@@ -3,9 +3,9 @@ const User = require("../models/user");
 
 exports.getResult = async (req, res, next) => {
   if (req.user) {
-    await ShortUrl.create({ fullUrl: req.body.fullUrl, userId: req.user._id });
+    await ShortUrl.create({ fullUrl: req.body.fullUrl, urlId: req.user._id });
   } else {
-    await ShortUrl.create({ fullUrl: req.body.fullUrl });
+    await ShortUrl.create({ fullUrl: req.body.fullUrl, urlId: req.sessionID });
   }
 
   res.redirect("/");

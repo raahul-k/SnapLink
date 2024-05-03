@@ -33,23 +33,25 @@ app.use(
   session({
     secret: "my secret",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     store: store,
   })
 );
 
 app.use((req, res, next) => {
-  if (!req.session.user) {
-    return next();
+  if (req.session) {
+    if (!req.session.user) {
+      return next();
+    }
+    User.findById(req.session.user._id)
+      .then((user) => {
+        req.user = user;
+        next();
+      })
+      .catch((err) => {
+        console.log("No user found: ", err);
+      });
   }
-  User.findById(req.session.user._id)
-    .then((user) => {
-      req.user = user;
-      next();
-    })
-    .catch((err) => {
-      console.log("No user found: ", err);
-    });
 });
 
 app.use(userRoutes);
@@ -58,11 +60,14 @@ app.use("/auth", authRoutes);
 app.get("/", async (req, res, next) => {
   let shortUrls = [];
   let name;
+  // await ShortUrl.deleteMany({
+  //   $nor: [{ urlId: req.sessionID }, { urlId: { $type: "objectId" } }],
+  // });
   if (req.user) {
     name = req.user.name;
-    shortUrls = await ShortUrl.find({ userId: req.user._id });
+    shortUrls = await ShortUrl.find({ urlId: req.user._id });
   } else {
-    shortUrls = await ShortUrl.find({ userId: undefined });
+    shortUrls = await ShortUrl.find({ urlId: req.sessionID });
   }
   res.render("index", {
     shortUrls: shortUrls,
