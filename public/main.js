@@ -38,7 +38,7 @@ const initialWindowHeight = window.innerHeight;
 function adjustButtonPosition() {
   let keyboardHeight = initialWindowHeight - window.innerHeight;
   document.querySelector(".input-url button").style.bottom = `${
-    keyboardHeight + 20
+    keyboardHeight + 200
   }px`; // Adjust as needed
 }
 

@@ -5,7 +5,7 @@ const initialWindowHeight = window.innerHeight;
 
 function adjustButtonHeight() {
   let keyboardHeight = initialWindowHeight - window.innerHeight;
-  loginBtn.style.bottom = `${keyboardHeight + 20}px`;
+  loginBtn.style.bottom = `${keyboardHeight + 200}px`;
 }
 
 window.addEventListener("resize", adjustButtonHeight);
